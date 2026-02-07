@@ -1,0 +1,28 @@
+{
+  "name": "medplus",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "dev:web": "turbo dev --filter=@medplus/web",
+    "dev:bot": "turbo dev --filter=@medplus/bot",
+    "build:web": "turbo build --filter=@medplus/web",
+    "build:bot": "turbo build --filter=@medplus/bot",
+    "db:migrate": "supabase db push",
+    "db:seed": "supabase db seed",
+    "db:types": "supabase gen types typescript --local > packages/db/src/types.generated.ts"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.0",
+    "typescript": "^5.7.0"
+  },
+  "packageManager": "npm@10.0.0",
+  "engines": {
+    "node": ">=20"
+  }
+}
