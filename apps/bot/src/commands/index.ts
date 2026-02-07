@@ -58,4 +58,14 @@ export function setupCommands(bot: Bot<BotContext>) {
     { command: 'status', description: 'Мои записи' },
     { command: 'help', description: 'Помощь' },
   ]).catch(() => {});
+
+  // Set Menu Button to open Mini App
+  const miniappUrl = process.env.MINIAPP_URL || 'https://medplus.da-net.net/miniapp';
+  bot.api.setChatMenuButton({
+    menu_button: {
+      type: 'web_app',
+      text: 'МедПлюс',
+      web_app: { url: miniappUrl },
+    },
+  }).catch(() => {});
 }

@@ -1,6 +1,10 @@
 import { InlineKeyboard } from 'grammy';
 
+const MINIAPP_URL = process.env.MINIAPP_URL || 'https://medplus.da-net.net/miniapp';
+
 export const mainMenuKeyboard = new InlineKeyboard()
+  .webApp('🏥 Открыть МедПлюс', MINIAPP_URL)
+  .row()
   .text('📋 Записаться на процедуру', 'book_procedure')
   .row()
   .text('📊 Мои записи', 'my_orders')

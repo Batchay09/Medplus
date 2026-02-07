@@ -30,7 +30,7 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   // Redirect unauthenticated users to login (except public paths)
-  const publicPaths = ['/login', '/api/telegram'];
+  const publicPaths = ['/login', '/api/telegram', '/miniapp', '/api/miniapp'];
   const isPublic = publicPaths.some((p) =>
     request.nextUrl.pathname.startsWith(p)
   );
