@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid document type' }, { status: 400 });
   }
 
-  return new NextResponse(pdfBytes, {
+  return new NextResponse(Buffer.from(pdfBytes), {
     headers: {
       'Content-Type': 'application/pdf',
       'Content-Disposition': `inline; filename="${filename}"`,
