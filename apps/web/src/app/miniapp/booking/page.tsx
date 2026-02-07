@@ -1,6 +1,6 @@
 'use client';
 
-import { useReducer, useCallback, useEffect } from 'react';
+import { Suspense, useReducer, useCallback, useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { useTelegram } from '@/components/miniapp/tg-provider';
 import { miniappApi } from '@/lib/miniapp/api-client';
@@ -72,6 +72,14 @@ function reducer(state: BookingState, action: BookingAction): BookingState {
 const TOTAL_STEPS = 7;
 
 export default function BookingPage() {
+  return (
+    <Suspense fallback={<div className="miniapp-spinner" />}>
+      <BookingContent />
+    </Suspense>
+  );
+}
+
+function BookingContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { webApp } = useTelegram();
